@@ -1,4 +1,4 @@
-# HTML to PDF
+# PDF Generator
 
 ## Installation
 

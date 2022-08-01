@@ -1,11 +1,11 @@
 {
-  "name": "html-to-pdf",
+  "name": "pdf-generator",
   "description": "API to generate a PDF file from URL or HTML, using Express.js and Puppeteer",
   "author": "Fernando Gabriel Castillo Sorani",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/FCastilloSorani/html-to-pdf.git"
+    "url": "https://github.com/FCastilloSorani/pdf-generator.git"
   },
   "main": "index.js",
   "scripts": {
