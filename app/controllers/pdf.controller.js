@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 function genPdf(req, res) {
-  const html = req.body;
+  const html = req.body.html;
   const url = req.body.url;
 
   if (!html && !url) {
@@ -58,4 +58,4 @@ async function genPdfFromHtml(html) {
   return pdf;
 }
 
-module.exports.getPdf = getPdf;
+module.exports.genPdf = genPdf;
