@@ -1,18 +1,21 @@
 {
-  "name": "node-pdf",
+  "name": "html-to-pdf",
+  "description": "API to generate a PDF file from URL or HTML, using Express.js and Puppeteer",
+  "author": "Fernando Gabriel Castillo Sorani",
   "version": "1.0.0",
-  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FCastilloSorani/html-to-pdf.git"
+  },
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "html-pdf": "^3.0.1",
     "morgan": "^1.10.0",
     "puppeteer": "^15.5.0"
   },
