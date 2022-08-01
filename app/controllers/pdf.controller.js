@@ -1,9 +1,9 @@
 const puppeteer = require('puppeteer');
 
-async function printPDF(url) {
+async function printPDF(html) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
-  await page.setContent(url, { waitUntil: 'networkidle0' });
+  await page.setContent(html, { waitUntil: 'networkidle0' });
   const pdf = await page.pdf({ format: 'A4' });
 
   await browser.close();
@@ -11,9 +11,9 @@ async function printPDF(url) {
 }
 
 function getPdf(req, res) {
-  const url = req.body;
+  const html = req.body;
 
-  if (!url) {
+  if (!html) {
     res.status(400).send({
       message: 'Content can not be empty',
     });
