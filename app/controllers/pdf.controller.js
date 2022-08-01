@@ -1,5 +1,30 @@
 const puppeteer = require('puppeteer');
 
+function genPdf(req, res) {
+  const html = req.body;
+  const url = req.body.url;
+
+  if (!html && !url) {
+    res.status(400).send({
+      message: 'Content can not be empty',
+    });
+    return;
+  }
+
+  if (url) {
+    genPdfFromUrl(url).then((pdf) => {
+      res.set(headers(pdf));
+      res.send(pdf);
+    });
+    return;
+  }
+
+  genPdfFromHtml(html).then((pdf) => {
+    res.set(headers(pdf));
+    res.send(pdf);
+  });
+}
+
 function headers(pdf) {
   return {
     'Content-Type': 'application/pdf',
@@ -31,31 +56,6 @@ async function genPdfFromHtml(html) {
   await browser.close();
 
   return pdf;
-}
-
-function getPdf(req, res) {
-  const html = req.body;
-  const url = req.body.url;
-
-  if (!html && !url) {
-    res.status(400).send({
-      message: 'Content can not be empty',
-    });
-    return;
-  }
-
-  if (url) {
-    genPdfFromUrl(url).then((pdf) => {
-      res.set(headers(pdf));
-      res.send(pdf);
-    });
-    return;
-  }
-
-  genPdfFromHtml(html).then((pdf) => {
-    res.set(headers(pdf));
-    res.send(pdf);
-  });
 }
 
 module.exports.getPdf = getPdf;
