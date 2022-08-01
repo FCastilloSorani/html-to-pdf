@@ -7,7 +7,7 @@ function headers(pdf) {
   };
 }
 
-async function printHtmlFromUrl(url) {
+async function genPdfFromUrl(url) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
@@ -20,7 +20,7 @@ async function printHtmlFromUrl(url) {
   return pdf;
 }
 
-async function printHtmlFromHtml(html) {
+async function genPdfFromHtml(html) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
@@ -45,14 +45,14 @@ function getPdf(req, res) {
   }
 
   if (url) {
-    printHtmlFromUrl(url).then((pdf) => {
+    genPdfFromUrl(url).then((pdf) => {
       res.set(headers(pdf));
       res.send(pdf);
     });
     return;
   }
 
-  printHtmlFromHtml(html).then((pdf) => {
+  genPdfFromHtml(html).then((pdf) => {
     res.set(headers(pdf));
     res.send(pdf);
   });
