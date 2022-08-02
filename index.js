@@ -1,7 +1,6 @@
 const cors = require('cors');
 const express = require('express');
 const morgan = require('morgan');
-const path = require('path');
 const pdfRouter = require('./app/routes/pdf.router');
 
 const app = express();
